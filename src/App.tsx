@@ -89,7 +89,7 @@ const App = () => {
         ref={inputRef}
         name="search"
         type="text"
-        className="bg-white p-2 rounded w-50"
+        className="bg-white p-2 rounded w-50 self-center"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
