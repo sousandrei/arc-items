@@ -27,7 +27,7 @@ export function ItemCard(item: Item) {
   return (
     <div
       className={`w-65 flex flex-col
-      bg-linear-135 ${rarityBackgroundGradient(item.rarity)} to-blue-950 to-65%
+      bg-linear-135 ${rarityBackgroundGradient(item.rarity)} to-blue-950 to-50%
       ${rarityBorderColor(item.rarity)} border-2 rounded-lg
       `}
     >

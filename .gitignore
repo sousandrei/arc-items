@@ -2,10 +2,12 @@
 .DS_Store
 *.local
 *.log*
+.envrc
 
 # Dist
 node_modules
 dist/
+.vercel
 
 # Profile
 .rspack-profile-*/
@@ -15,4 +17,5 @@ dist/
 !.vscode/extensions.json
 .idea
 
+# Build time 
 public/items.json
