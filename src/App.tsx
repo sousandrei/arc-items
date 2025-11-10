@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Item } from './Item';
 import { ItemCard } from './Item';
 import { Section } from './Section';
 
 const App = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('');
 
   const [recycleItems, setRecycleItems] = useState<React.ReactElement[]>([]);
   const [questItems, setQuestItems] = useState<React.ReactElement[]>([]);
-  const [projectItems, setProjectItems] = useState<React.ReactElement[]>([]);
+  const [upgradeItems, setUpgradeItems] = useState<React.ReactElement[]>([]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -48,28 +50,43 @@ const App = () => {
       const projectItems: React.ReactElement[] = [];
 
       for (const item of items) {
-        console.log(item.key, groups);
-
         if (groups.recycle.includes(item.key)) {
           recycleItems.push(item);
         } else if (groups.quests.includes(item.key)) {
           questItems.push(item);
-        } else if (groups.projects.includes(item.key)) {
+        } else if (groups.upgrades.includes(item.key)) {
           projectItems.push(item);
         }
       }
 
       setRecycleItems(recycleItems);
       setQuestItems(questItems);
-      setProjectItems(projectItems);
+      setUpgradeItems(projectItems);
     };
 
     fetchItems();
   }, []);
 
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setFilter('');
+      }
+
+      if (/[a-z]/.test(e.key) && document.activeElement !== inputRef.current) {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
+
   return (
     <div className="bg-slate-900 flex flex-col gap-4 p-4 min-h-screen">
       <input
+        ref={inputRef}
         name="search"
         type="text"
         className="bg-white p-2 rounded w-50"
@@ -78,7 +95,7 @@ const App = () => {
       />
       <Section title="Safe to Recycle" items={recycleItems} search={search} />
       <Section title="Keep for Quests" items={questItems} search={search} />
-      <Section title="Keep for Projects" items={projectItems} search={search} />
+      <Section title="Workshop Upgrades" items={upgradeItems} search={search} />
     </div>
   );
 };

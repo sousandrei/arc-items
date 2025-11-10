@@ -8,10 +8,7 @@
     }
   },
   "files": {
-    "includes": [
-      "src/**/*",
-      "scripts/**/*"
-    ]
+    "includes": ["src/**/*", "scripts/**/*"]
   },
   "vcs": {
     "enabled": true,
