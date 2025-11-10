@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Item } from './Item';
 import { ItemCard } from './Item';
+import { useKey } from './shortcut';
 
 const App = () => {
   const [filter, setFilter] = useState('');
@@ -25,6 +26,9 @@ const App = () => {
       }, {}),
   ).map((item) => <ItemCard key={item.id} {...item} />);
 
+  const cmdKRef = useRef(null);
+  useKey('k', cmdKRef);
+
   return (
     <div className="bg-slate-900 flex flex-col gap-4 p-4 min-h-screen">
       <input
@@ -33,8 +37,9 @@ const App = () => {
         className="bg-white p-2 rounded w-50"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
+        ref={cmdKRef}
       />
-      <div className="flex flex-wrap gap-4">{itemDOM}</div>
+      <div className="flex flex-wrap gap-4">{itemDOM} </div>
     </div>
   );
 };
