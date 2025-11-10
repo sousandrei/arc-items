@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 import './root.css';
-import 'react-cmdk/dist/cmdk.css';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {
