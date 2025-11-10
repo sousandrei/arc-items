@@ -26,14 +26,14 @@ export function ItemCard(item: Item) {
 
   return (
     <div
-      className={`w-65 flex flex-col
+      className={`w-40 flex flex-col
       bg-linear-135 ${rarityBackgroundGradient(item.rarity)} to-blue-950 to-50%
       ${rarityBorderColor(item.rarity)} border-2 rounded-lg
       `}
     >
       <div className="relative flex flex-col gap-2 rounded-t-lg p-2">
         <img
-          className="h-30 max-w-full self-center"
+          className="h-15 max-w-full self-center"
           src={item.icon}
           alt={item.name || 'Item image'}
         />
@@ -43,37 +43,31 @@ export function ItemCard(item: Item) {
           text-white"
         >
           <img
-            className="w-5 h-5 inline-block mr-1 invert mr-2"
+            className="w-3 h-3 inline-block mr-1 invert mr-2"
             src={RaiderCoinIcon}
             alt="Raider Coin"
           />
-          <span>{item.value}</span>
+          <span className="text-xs">{item.value}</span>
           <img
-            className="w-5 h-5 inline-block mr-1 invert ml-4"
+            className="w-3 h-3 inline-block mr-1 invert ml-4"
             src={WeightIcon}
             alt="Weight in Kg"
           />
-          <span>{item.stat_block.weight}</span>
+          <span className="text-xs">{item.stat_block.weight}</span>
         </div>
         <CornerCurve name={item.name} color={rarityTextColor(item.rarity)} />
       </div>
       <div className="h-full bg-slate-700 p-2 text-white rounded-b-lg flex flex-col gap-2">
-        <span className="font-semibold text-lg">{item.name}</span>
-        <div className="min-h-10 flex justify-start text-white text-sm gap-2 mt-4">
+        <span className="font-semibold text-md">{item.name}</span>
+        <div className="min-h-10 flex flex-col justify-start text-white text-sm gap-2 mt-4">
           <span
-            className={`h-fit p-1 rounded font-medium ${rarityBackgroundColor(item.rarity)}`}
+            className={`h-fit w-fit p-1 rounded font-medium ${rarityBackgroundColor(item.rarity)}`}
           >
             {item.item_type}
           </span>
-          {item.rarity && (
-            <span
-              className={`h-fit p-1 rounded font-medium ${rarityBackgroundColor(item.rarity)}`}
-            >
-              {item.rarity}
-            </span>
-          )}
         </div>
-        <span className="text-sm">{item.loot_area?.split(',')}</span>
+
+        <span className="text-xs">{item.loot_area?.split(',')}</span>
       </div>
     </div>
   );
@@ -90,7 +84,7 @@ function CornerCurve({
 }: CornerCurveProps) {
   return (
     <div className={`absolute bottom-0 left-0 ${color}`}>
-      <svg className="fill-current" width="40" height="40" viewBox="0 0 30 30">
+      <svg className="fill-current" width="20" height="20" viewBox="0 0 30 30">
         <title>{name}</title>
         <path d="M0 30 L30 30 Q5 25 0 0"></path>
       </svg>
