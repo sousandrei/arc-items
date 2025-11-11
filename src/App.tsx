@@ -82,7 +82,10 @@ const App = () => {
         setFilter('');
       }
 
-      if (/^[a-z]$/.test(e.key) && document.activeElement !== inputRef.current) {
+      if (
+        /^[a-z]$/.test(e.key) &&
+        document.activeElement !== inputRef.current
+      ) {
         e.preventDefault();
         setFilter(e.key);
         inputRef.current?.focus();
@@ -105,8 +108,16 @@ const App = () => {
       />
       <Section title="♻️ Safe to Recycle" items={recycleItems} search={search} />
       <Section title="📋 Keep for Quests" items={questItems} search={search} />
-      <Section title="⬆️ Workshop Upgrades" items={upgradeItems} search={search} />
-      <Section title="🏗️ Keep for Projects" items={projectItems} search={search} />
+      <Section
+        title="⬆️ Workshop Upgrades"
+        items={upgradeItems}
+        search={search}
+      />
+      <Section
+        title="🏗️ Keep for Projects"
+        items={projectItems}
+        search={search}
+      />
     </div>
   );
 };
