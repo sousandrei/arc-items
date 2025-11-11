@@ -1,0 +1,225 @@
+{
+    "recycle": [
+        "accordion",
+        "alarm-clock",
+        "arc-coolant",
+        "arc-flex-rubber",
+        "arc-performance-steel",
+        "arc-synthetic-resin",
+        "arc-thermo-lining",
+        "bicycle-pump",
+        "broken-flashlight",
+        "broken-guidance-system",
+        "broken-handcuffs",
+        "broken-handheld-radio",
+        "broken-taser",
+        "burned-arc-circuitry",
+        "camera-lens",
+        "candle-holder",
+        "coolant",
+        "cooling-coil",
+        "crumpled-plastic-bottle",
+        "damaged-arc-motion-core",
+        "damaged-arc-powercell",
+        "deflated-footbal",
+        "diving-googles",
+        "dried-out-arc-resin",
+        "expired-respirator",
+        "flute",
+        "frying-pan",
+        "garlic-press",
+        "headphones",
+        "household-cleaner",
+        "ice-cream-scooper",
+        "impure-arc-coolant",
+        "industrial-charger",
+        "industrial-magnet",
+        "metal-brackets",
+        "number-plate",
+        "polluted-air-filter",
+        "portable-tv",
+        "power-bank",
+        "projector",
+        "radio",
+        "remote-control",
+        "ripped-safety-vest",
+        "rubber-pad",
+        "ruined-accordion",
+        "ruined-baton",
+        "ruined-handcuffs",
+        "ruined-parachute",
+        "ruined-riot-shield",
+        "ruined-tactical-vest",
+        "rusted-bolts",
+        "rusty-arc-steel",
+        "spotter-relay",
+        "spring-cushion",
+        "tattered-arc-lining",
+        "tattered-clothes",
+        "thermostat",
+        "torn-blanket",
+        "turbo-pump",
+        "water-filter"
+    ],
+    "quests": [
+        {
+            "leaper-pulse-unit": 1,
+            "power-rod": 1,
+            "rocketeer-driver": 1,
+            "surveyor-vault": 1,
+            "antiseptic": 2,
+            "hornet-driver": 2,
+            "syringe": 1,
+            "wasp-driver": 2,
+            "water-pump": 1,
+            "snitch-scanner": 2
+        }
+    ],
+    "projects": [
+        {
+            "leaper-pulse-unit": 3,
+            "magnetic-accelerator": 3,
+            "exodus-modules": 1,
+            "advanced-electrical-components": 5,
+            "humidifier": 5,
+            "sensors": 20,
+            "cooling-fan": 5,
+            "battery": 30,
+            "light-bulb": 5,
+            "electrical-components": 30,
+            "wires": 30,
+            "durable-cloth": 35,
+            "steel-spring": 15,
+            "arc-alloy": 80,
+            "rubber-parts": 150,
+            "metal-parts": 200
+        }
+    ],
+    "upgrades": [
+        {
+            "scrappy": {
+                "level_2": [
+                    {
+                        "dog-collar": 1
+                    }
+                ],
+                "level_3": [
+                    {
+                        "lemon": 3,
+                        "apricot": 3
+                    }
+                ],
+                "level_4": [
+                    {
+                        "prickly-pear": 6,
+                        "olives": 6,
+                        "cat-bed": 1
+                    }
+                ],
+                "level_5": [
+                    {
+                        "mushroom": 12,
+                        "apricot": 12,
+                        "very-comfortable-pillow": 3
+                    }
+                ]
+            },
+            "gunsmith": {
+                "level_2": [
+                    {
+                        "rusted-tools": 3,
+                        "mechanical-components": 5,
+                        "wasp-driver": 8
+                    }
+                ],
+                "level_3": [
+                    {
+                        "rusted-gear": 3,
+                        "advanced-mechanical-components": 5,
+                        "sentinel-part": 4
+                    }
+                ]
+            },
+            "medical-lab": {
+                "level_2": [
+                    {
+                        "cracked-bioscanner": 2,
+                        "durable-cloth": 5,
+                        "tick-pod": 8
+                    }
+                ],
+                "level_3": [
+                    {
+                        "rusted-shut-medical-kit": 3,
+                        "antiseptic": 8,
+                        "surveyor-vault": 5
+                    }
+                ]
+            },
+            "explosives-station": {
+                "level_2": [
+                    {
+                        "synthesized-fuel": 3,
+                        "crude-explosives": 5,
+                        "pop-trigger": 5
+                    }
+                ],
+                "level_3": [
+                    {
+                        "laboratory-reagents": 3,
+                        "explosive-compound": 5,
+                        "rocketeer-part": 3
+                    }
+                ]
+            },
+            "gear-bench": {
+                "level_2": [
+                    {
+                        "power-cable": 3,
+                        "hornet-driver": 5,
+                        "electrical-components": 5
+                    }
+                ],
+                "level_3": [
+                    {
+                        "industrial-battery": 3,
+                        "advanced-electrical-components": 5,
+                        "bastion-part": 6
+                    }
+                ]
+            },
+            "refiner": {
+                "level_2": [
+                    {
+                        "toaster": 3,
+                        "arc-motion-core": 5,
+                        "fireball-burner": 8
+                    }
+                ],
+                "level_3": [
+                    {
+                        "motor": 3,
+                        "arc-circuitry": 10,
+                        "bombardier-cell": 6
+                    }
+                ]
+            },
+            "utility-station": {
+                "level_2": [
+                    {
+                        "damaged-heat-sink": 2,
+                        "electrical-components": 5,
+                        "snitch-scanner": 6
+                    }
+                ],
+                "level_3": [
+                    {
+                        "fried-motherboard": 3,
+                        "advanced-electrical-components": 5,
+                        "leaper-pulse-unit": 4
+                    }
+                ]
+            }
+        }
+    ]
+}

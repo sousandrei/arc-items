@@ -94,9 +94,10 @@ const App = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
-      <Section title="Safe to Recycle" items={recycleItems} search={search} />
-      <Section title="Keep for Quests" items={questItems} search={search} />
-      <Section title="Workshop Upgrades" items={upgradeItems} search={search} />
+      <Section title="♻️ Safe to Recycle" items={recycleItems} search={search} />
+      <Section title="📋 Keep for Quests" items={questItems} search={search} />
+      <Section title="⬆️ Workshop Upgrades" items={upgradeItems} search={search} />
+      <Section title="🏗️ Keep for Projects" items={projectItems} search={search} />
     </div>
   );
 };
