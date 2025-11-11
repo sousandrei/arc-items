@@ -13,6 +13,7 @@ const App = () => {
   const [recycleItems, setRecycleItems] = useState<React.ReactElement[]>([]);
   const [questItems, setQuestItems] = useState<React.ReactElement[]>([]);
   const [upgradeItems, setUpgradeItems] = useState<React.ReactElement[]>([]);
+  const [projectItems, setProjectItems] = useState<React.ReactElement[]>([]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -47,21 +48,29 @@ const App = () => {
 
       const recycleItems: React.ReactElement[] = [];
       const questItems: React.ReactElement[] = [];
+      const upgradeItems: React.ReactElement[] = [];
       const projectItems: React.ReactElement[] = [];
 
       for (const item of items) {
         if (groups.recycle.includes(item.key)) {
           recycleItems.push(item);
-        } else if (groups.quests.includes(item.key)) {
-          questItems.push(item);
-        } else if (groups.upgrades.includes(item.key)) {
-          projectItems.push(item);
+        } else {
+          if (groups.quests.includes(item.key)) {
+            questItems.push(item);
+          }
+          if (groups.upgrades.includes(item.key)) {
+            upgradeItems.push(item);
+          }
+          if (groups.projects.includes(item.key)) {
+            projectItems.push(item);
+          }
         }
       }
 
       setRecycleItems(recycleItems);
       setQuestItems(questItems);
-      setUpgradeItems(projectItems);
+      setUpgradeItems(upgradeItems);
+      setProjectItems(projectItems);
     };
 
     fetchItems();
