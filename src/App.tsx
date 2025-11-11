@@ -73,8 +73,9 @@ const App = () => {
         setFilter('');
       }
 
-      if (/[a-z]/.test(e.key) && document.activeElement !== inputRef.current) {
+      if (/^[a-z]$/.test(e.key) && document.activeElement !== inputRef.current) {
         e.preventDefault();
+        setFilter(e.key);
         inputRef.current?.focus();
       }
     };
