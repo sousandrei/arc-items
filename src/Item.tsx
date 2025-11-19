@@ -18,7 +18,7 @@ export type Item = {
   stat_block: Record<string, number | string>;
 };
 
-export function ItemCard(item: Item) {
+export function ItemCard(item: Item): React.ReactElement<Item> | null {
   if (!item.icon) {
     console.log('Missing icon for item:', item);
     return null;
@@ -26,21 +26,22 @@ export function ItemCard(item: Item) {
 
   return (
     <div
-      className={`w-40 flex flex-col
+      className={`flex flex-col transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-white/20 shadow-inner shadow-white/5 min-h-[250px] min-w-[160px] max-w-[200px]
       bg-linear-135 ${rarityBackgroundGradient(item.rarity)} to-blue-950 to-50%
-      ${rarityBorderColor(item.rarity)} border-2 rounded-lg
+      ${rarityBorderColor(item.rarity)} border-2 rounded-xl
       `}
+      {...item}
     >
       <div className="relative flex flex-col gap-2 rounded-t-lg p-2">
         <img
-          className="h-15 max-w-full self-center"
+          className="h-15 w-full object-contain"
           src={item.icon}
           alt={item.name || 'Item image'}
         />
         <div
           className="
           flex justify-end align-bottom items-center
-          text-white"
+          text-neutral-400"
         >
           <img
             className="w-3 h-3 inline-block mr-1 invert mr-2"
@@ -57,8 +58,10 @@ export function ItemCard(item: Item) {
         </div>
         <CornerCurve name={item.name} color={rarityTextColor(item.rarity)} />
       </div>
-      <div className="h-full bg-slate-700 p-2 text-white rounded-b-lg flex flex-col gap-2">
-        <span className="font-semibold text-md">{item.name}</span>
+      <div className="h-full bg-neutral-800 p-2 text-white rounded-b-lg flex flex-col gap-2 justify-between">
+        <span className="font-semibold text-md text-neutral-200">
+          {item.name}
+        </span>
         <div className="min-h-10 flex flex-col justify-start text-white text-sm gap-2 mt-4">
           <span
             className={`h-fit w-fit p-1 rounded font-medium ${rarityBackgroundColor(item.rarity)}`}
@@ -67,7 +70,9 @@ export function ItemCard(item: Item) {
           </span>
         </div>
 
-        <span className="text-xs">{item.loot_area?.split(',')}</span>
+        <span className="text-xs text-neutral-400">
+          {item.loot_area?.split(',')}
+        </span>
       </div>
     </div>
   );

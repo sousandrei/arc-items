@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #202020; /* Dark background for the track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a; /* Darker thumb color */
+  border-radius: 10px;
+  border: 2px solid #202020; /* Border to create a subtle separation */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6b6b; /* Lighter thumb color on hover */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a4a #202020;
+}
