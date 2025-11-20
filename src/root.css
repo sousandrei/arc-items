@@ -1,27 +1,54 @@
 @import "tailwindcss";
 
-/* Custom Scrollbar Styles */
+:root {
+  font-family:
+    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0a0a0a 100%);
+  /* Deep slate to black gradient */
+  background-attachment: fixed;
+  color: #e5e5e5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar Styles - Minimalist */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #202020; /* Dark background for the track */
-  border-radius: 10px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a4a4a; /* Darker thumb color */
-  border-radius: 10px;
-  border: 2px solid #202020; /* Border to create a subtle separation */
+  background: #333;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b6b6b; /* Lighter thumb color on hover */
+  background: #555;
 }
 
 /* For Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #4a4a4a #202020;
+  scrollbar-color: #333 transparent;
 }

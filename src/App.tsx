@@ -27,7 +27,7 @@ const App = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setSearch(filter);
-    }, 50);
+    }, 150);
 
     return () => clearTimeout(timeoutId);
   }, [filter]);
@@ -96,6 +96,7 @@ const App = () => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setFilter('');
+        inputRef.current?.blur();
       }
 
       if (
@@ -113,51 +114,103 @@ const App = () => {
   }, []);
 
   return (
-    <main className="flex flex-col items-center bg-zinc-900 min-h-screen font-sans">
-      <header className="z-1 fixed top-4 max-w-screen-md p-2 rounded-full border border-white/20 bg-neutral-950/20 backdrop-blur-lg shadow-xl">
-        <div className="flex items-center w-full">
-          <label htmlFor="search" className="pl-4">
-            <Search className="text-cyan-500" />
-          </label>
-          <input
-            ref={inputRef}
-            id="search"
-            name="search"
-            type="text"
-            className="w-full bg-transparent p-4 text-white placeholder:text-neutral-400 focus:outline-none"
-            placeholder="Search for an item..."
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          />
+    <main className="flex flex-col items-center min-h-screen font-sans text-neutral-200 selection:bg-cyan-500/30 relative">
+      <div className="bg-noise"></div>
+      <header className="fixed top-6 z-50 w-full max-w-2xl px-4">
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+          <div className="relative flex items-center w-full bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-neutral-900/90">
+            <label htmlFor="search" className="pl-5 pr-3 cursor-text">
+              <Search className="w-5 h-5 text-neutral-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
+            </label>
+            <input
+              ref={inputRef}
+              id="search"
+              name="search"
+              type="text"
+              className="w-full bg-transparent py-4 pr-6 text-lg text-white placeholder:text-neutral-500 focus:outline-none"
+              placeholder="Search database..."
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              autoComplete="off"
+            />
+            {filter && (
+              <button
+                type="button"
+                onClick={() => {
+                  setFilter('');
+                  inputRef.current?.focus();
+                }}
+                className="absolute right-4 p-1 rounded-full hover:bg-white/10 text-neutral-500 hover:text-white transition-colors"
+              >
+                <span className="sr-only">Clear</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <title>Clear</title>
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
       </header>
-      {isLoading ? ( // Conditional rendering for loading state
-        <div className="flex flex-col items-center justify-center min-h-screen text-white text-xl">
-          <p>Loading items...</p>
+
+      {isLoading ? (
+        <div className="flex flex-col items-center justify-center min-h-screen animate-pulse">
+          <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
+          <p className="text-neutral-500 font-medium tracking-wide uppercase text-sm">
+            Initializing Database...
+          </p>
         </div>
       ) : (
-        <div className="p-8 pt-28 w-full flex flex-col gap-8 max-w-screen-2xl mx-auto">
+        <div className="w-full max-w-[1600px] mx-auto px-6 pb-24 pt-32 flex flex-col gap-16">
           <Section
-            title="♻️ Safe to Recycle"
+            title="Safe to Recycle"
+            subtitle="Items with high value but low utility."
+            icon="♻️"
             items={recycleItems}
             search={search}
           />
           <Section
-            title="📋 Keep for Quests"
+            title="Keep for Quests"
+            subtitle="Required for completing trader tasks."
+            icon="📋"
             items={questItems}
             search={search}
           />
           <Section
-            title="⬆️ Workshop Upgrades"
+            title="Workshop Upgrades"
+            subtitle="Essential materials for base expansion."
+            icon="⬆️"
             items={upgradeItems}
             search={search}
           />
           <Section
-            title="🏗️ Keep for Projects"
+            title="Keep for Projects"
+            subtitle="Needed for crafting and special projects."
+            icon="🏗️"
             items={projectItems}
             search={search}
           />
-          <Section title="📦 All Items" items={items} search={search} />
+          {search.length > 0 && (
+            <Section
+              title="All Items"
+              subtitle="Complete database of known items."
+              icon="📦"
+              items={items}
+              search={search}
+            />
+          )}
         </div>
       )}
     </main>

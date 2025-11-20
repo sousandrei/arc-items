@@ -2,14 +2,24 @@ import type { Item } from './Item';
 
 type SectionProps = {
   title: string;
+  subtitle?: string;
+  icon?: string;
   items: React.ReactElement<Item>[];
   search: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+};
 
 const rarityArray = ['', 'Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
 
-export const Section = ({ title, items, search }: SectionProps) => {
-  const itemsToShow = search
+export const Section = ({
+  title,
+  subtitle,
+  icon,
+  items,
+  search,
+}: SectionProps) => {
+  if (items.length === 0) return null;
+
+  const filteredItems = search
     ? items.filter(
         (item) =>
           item.props.name?.toLowerCase().includes(search.toLowerCase()) ||
@@ -19,7 +29,9 @@ export const Section = ({ title, items, search }: SectionProps) => {
       )
     : items;
 
-  const itemsDOM = itemsToShow.sort((a, b) => {
+  if (filteredItems.length === 0) return null;
+
+  filteredItems.sort((a, b) => {
     if (search === '') {
       return a.props.name.localeCompare(b.props.name);
     }
@@ -34,24 +46,25 @@ export const Section = ({ title, items, search }: SectionProps) => {
     return bRarityIndex - aRarityIndex;
   });
 
-  if (itemsToShow.length === 0) {
-    return null;
-  }
-
   return (
-    <div className="flex flex-col flex-wrap gap-4 w-full">
-      <span className="text-3xl text-neutral-400 font-bold border-b-2 border-cyan-500 pb-2 mb-6">
-        {title} - ({itemsDOM.length})
-      </span>
-      {itemsDOM.length === 0 && search !== '' ? (
-        <p className="text-neutral-500 italic">
-          No results found in this section.
-        </p>
-      ) : (
-        <div className="grid grid-flow-row-dense auto-rows-max [grid-template-columns:repeat(auto-fill,minmax(160px,1fr))] gap-4 max-w-full">
-          {itemsDOM}
-        </div>
-      )}
-    </div>
+    <section className="flex flex-col gap-6">
+      <div className="flex flex-col gap-1 border-b border-white/5 pb-4 relative">
+        <div className="absolute bottom-0 left-0 w-12 h-[1px] bg-gradient-to-r from-cyan-500 to-transparent"></div>
+        <h2 className="text-2xl font-bold text-white flex items-center gap-3 tracking-tight">
+          {icon && <span className="text-2xl drop-shadow-md">{icon}</span>}
+          {title}
+          <span className="text-sm font-normal text-neutral-500 ml-auto bg-neutral-900/50 px-3 py-1 rounded-full border border-white/5 shadow-inner">
+            {filteredItems.length}
+          </span>
+        </h2>
+        {subtitle && (
+          <p className="text-neutral-400 text-sm pl-1">{subtitle}</p>
+        )}
+      </div>
+
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6">
+        {filteredItems}
+      </div>
+    </section>
   );
 };

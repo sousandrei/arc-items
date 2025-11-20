@@ -26,9 +26,9 @@ export function ItemCard(item: Item): React.ReactElement<Item> | null {
 
   return (
     <div
-      className={`flex flex-col transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-white/20 shadow-inner shadow-white/5 min-h-[250px] min-w-[160px] max-w-[200px]
-      bg-linear-135 ${rarityBackgroundGradient(item.rarity)} to-blue-950 to-50%
-      ${rarityBorderColor(item.rarity)} border-2 rounded-xl
+      className={`flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/20 shadow-lg shadow-black/40 min-h-[250px] min-w-[160px] max-w-[200px]
+      bg-gradient-to-br ${rarityBackgroundGradient(item.rarity)} to-neutral-900/90 to-60% backdrop-blur-sm
+      ${rarityBorderColor(item.rarity)} border rounded-xl overflow-hidden relative group
       `}
       {...item}
     >
